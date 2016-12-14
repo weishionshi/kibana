@@ -99,3 +99,7 @@ elasticsearch.url: "http://10.10.13.120:9200"
 # metrics. Minimum is 100ms. Defaults to 5000.
 #ops.interval: 5000
 optimize.unsafeCache: false
+optimize.enabled: false
+# The default locale. This locale can be used in certain circumstances to substitute any missing
+# translations.
+#i18n.defaultLocale: "en"
