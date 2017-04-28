@@ -27,3 +27,4 @@ TITLE Kibana Server
 :finally
 
 ENDLOCAL
+pause
