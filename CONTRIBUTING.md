@@ -310,11 +310,11 @@ npm run test:ui:runner
 
 Packages are built using fpm, pleaserun, dpkg, and rpm.  fpm and pleaserun can be installed using gem.  Package building has only been tested on Linux and is not supported on any other platform.
 
-```bash
-apt-get install ruby-dev rpm
-gem install fpm -v 1.5.0
-gem install pleaserun -v 0.0.24
-npm run build -- --skip-archives
+```bash  
+apt-get install ruby-dev rpm  
+gem install fpm -v 1.5.0  
+gem install pleaserun -v 0.0.24  
+npm run build -- --skip-archives  
 ```
 
 To specify a package to build you can add `rpm` or `deb` as an argument.
