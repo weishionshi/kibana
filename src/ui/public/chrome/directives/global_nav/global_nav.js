@@ -27,8 +27,10 @@ module.directive('globalNav', globalNavState => {
         scope.isGlobalNavOpen = isOpen;
         scope.globalNavToggleButton = {
           classes: isOpen ? 'global-nav-link--close' : undefined,
-          title: isOpen ? 'Collapse' : 'Expand',
-          tooltipContent: isOpen ? 'Collapse side bar' : 'Expand side bar',
+          title: isOpen ? '收起' : '展开',
+          tooltipContent: isOpen ? '收起侧边栏' : '展开侧边栏',
+          // title: isOpen ? 'Collapse' : 'Expand',
+          // tooltipContent: isOpen ? 'Collapse side bar' : 'Expand side bar',
         };
 
         // Notify visualizations, e.g. the dashboard, that they should re-render.

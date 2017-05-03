@@ -64,26 +64,30 @@ module.exports = function (kibana) {
       links: [
         {
           id: 'kibana:discover',
-          title: 'Discover',
+          //title: 'Discover',
+          title: '搜索日志',
           order: -1003,
           url: `${kbnBaseUrl}#/discover`,
           description: 'interactively explore your data',
           icon: 'plugins/kibana/assets/discover.svg',
         }, {
           id: 'kibana:visualize',
-          title: 'Visualize',
+          //title: 'Visualize',
+          title: '可视化图表',
           order: -1002,
           url: `${kbnBaseUrl}#/visualize`,
           description: 'design data visualizations',
           icon: 'plugins/kibana/assets/visualize.svg',
         }, {
           id: 'kibana:dashboard',
-          title: 'Dashboard',
+          //title: 'Dashboard',
+          title: '仪表盘',
           order: -1001,
           url: `${kbnBaseUrl}#/dashboard`,
           description: 'compose visualizations for much win',
           icon: 'plugins/kibana/assets/dashboard.svg',
-        }, {
+        },
+        /*{
           id: 'kibana:dev_tools',
           title: 'Dev Tools',
           order: 9001,
@@ -98,7 +102,7 @@ module.exports = function (kibana) {
           description: 'define index patterns, change config, and more',
           icon: 'plugins/kibana/assets/settings.svg',
           linkToLastSubUrl: false
-        },
+        },*/
       ],
       injectDefaultVars(server, options) {
         return {

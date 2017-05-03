@@ -93,7 +93,8 @@ block content
       .kibanaLoader__logo
         .kibanaWelcomeLogo
       .kibanaLoader__content
-        | Loading Kibana
+          | 装载中...
+        //| Loading Kibana
 
   script.
     window.onload = function () {
@@ -125,7 +126,8 @@ block content
           err.style['text-align'] = 'center';
           err.style['background'] = '#F44336';
           err.style['padding'] = '25px';
-          err.innerText = 'Kibana did not load properly. Check the server output for more information.';
+          //err.innerText = 'Kibana did not load properly. Check the server output for more information.';
+          err.innerText = '装载错误，请联系管理员';
 
           document.body.innerHTML = err.outerHTML;
         }
