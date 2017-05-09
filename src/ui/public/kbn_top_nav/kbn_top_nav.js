@@ -8,8 +8,8 @@
  * ```
  *
  * Menu items/templates are passed to the kbnTopNav via the config attribute
- * and should be defined as an array of objects. Each object represents a menu
- * item and should have the following properties:
+ * and should be defined as an array of objects. Each object represents a menu item
+ * and should have the following properties:
  *
  * @param {Array<Object>|KbnTopNavController} config
  * @param {string} config[].key

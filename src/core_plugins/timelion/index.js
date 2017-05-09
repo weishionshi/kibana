@@ -22,6 +22,7 @@ module.exports = function (kibana) {
         description: 'Time series expressions for everything',
         icon: 'plugins/timelion/icon.svg',
         main: mainFile,
+        hidden: true,
         injectVars: function (server, options) {
           var config = server.config();
           return {
