@@ -31,8 +31,10 @@ routes
 chrome
 .setRootController('kibana', function ($scope, courier, config) {
   // wait for the application to finish loading
+  // 控制器监听 application.load 事件，在页面加载完成的时候，触发 courier.start() 函数
+  //Courier 是一个非常重要的类，可以简单理解为 kibana 跟 ES 之间的一个 object mapper
   $scope.$on('application.load', function () {
-    courier.start();
+    courier.start();  //src/ui/public/courier/courier.js
   });
 
   config.watch('dateFormat:tz', setDefaultTimezone, $scope);

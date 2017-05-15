@@ -33,7 +33,7 @@ export class I18n {
 
   _registeredTranslations = {};
 
-  constructor(defaultLocale = 'en') {
+  constructor(defaultLocale = 'zh') {
     this._defaultLocale = defaultLocale;
   }
 
