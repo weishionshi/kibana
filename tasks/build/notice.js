@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import npm from 'npm';
 import npmLicense from 'license-checker';
 import glob from 'glob';
 import path from 'path';
@@ -17,12 +16,21 @@ export default function licenses(grunt) {
         cwd: buildPath
       });
       installedPackages.toString().trim().split('\n').forEach(pkg => {
+        let modulePath;
+        let dirPath;
+        let packageName;
+        let drive;
         const packageDetails = pkg.split(':');
-        const [modulePath, packageName] = packageDetails;
+        if (/^win/.test(process.platform)) {
+          [drive, dirPath, packageName] = packageDetails;
+          modulePath = `${drive}:${dirPath}`;
+        } else {
+          [modulePath, packageName] = packageDetails;
+        }
         const licenses = glob.sync(path.join(modulePath, '*LICENSE*'));
         const notices = glob.sync(path.join(modulePath, '*NOTICE*'));
         packagePaths[packageName] = {
-          relative: modulePath.replace(/.*\/kibana\//, ''),
+          relative: modulePath.replace(/.*(\/|\\)kibana(\/|\\)/, ''),
           licenses,
           notices
         };

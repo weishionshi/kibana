@@ -2,7 +2,7 @@
   role="form"
   ng-submit="opts.save()"
 >
-  <div class="kuiLocalDropdownTitle">Save {{opts.dashboard.getDisplayName()}}</div>
+  <div class="kuiLocalDropdownTitle">保存 {{opts.dashboard.getDisplayName()}}</div> <!-- 保存 {{opts.dashboard.getDisplayName()}} -->
   <input
     class="kuiLocalDropdownInput"
     id="dashboardTitle"
@@ -23,6 +23,7 @@
   </div>
 
   <button type="submit" ng-disabled="!opts.dashboard.title" class="btn btn-primary" aria-label="Save dashboard">
-    Save
+    <!-- Save -->
+   	 保存
   </button>
 </form>

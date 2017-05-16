@@ -22,7 +22,7 @@
     <!-- i18n
     <h5>Selected Fields</h5>
     -->
-    <h5 translate="KBN-DIS-SELECTED-FIELDS"></h5>
+    <h5 >已选字段</h5>
   </div>
   <ul class="list-unstyled discover-selected-fields" >
     <discover-field ng-repeat="field in fields.raw|filter:{display:true}">
@@ -30,7 +30,7 @@
   </ul>
 
   <div class="sidebar-list-header sidebar-item">
-    <h5 translate="KBN-DIS-AVAIL-FIELDS"> <!-- Available Fields i18n-->
+    <h5> <!-- Available Fields translate="KBN-DIS-AVAIL-FIELDS"-->可选字段
       <i
         ng-class="{ 'fa-chevron-right': !showFields, 'fa-chevron-down': showFields }"
         ng-click="showFields = !showFields"
