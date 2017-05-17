@@ -1,6 +1,7 @@
 <div ng-if="aggIsTooLow" class="form-group">
   <p class="vis-editor-agg-error">
-    "{{ agg.schema.title }}" aggs must run before all other buckets!
+    <!--"{{ agg.schema.title }}" aggs must run before all other buckets! -->
+    "{{ agg.schema.title }}" 必须在其他buckets前先执行
   </p>
   <input
     type="number"

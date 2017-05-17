@@ -1,30 +1,35 @@
 <div>
   <div class="col-md-10 col-md-offset-1" data-test-subj="discoverNoResults">
 
-    <h1>No results found <i aria-hidden="true" class="fa fa-meh-o"></i></h1>
+    <h1>搜索没有结果 <i aria-hidden="true" class="fa fa-meh-o"></i></h1> <!-- No results found -->
 
     <p>
-      Unfortunately I could not find any results matching your search. I tried really hard. I looked all over the place and frankly, I just couldn't find anything good. Help me, help you. Here are some ideas:
+      <!--Unfortunately I could not find any results matching your search. I tried really hard. I looked all over the place and frankly, I just couldn't find anything good. Help me, help you. Here are some ideas: -->
+     	 搜索没有的结果，您可以尝试一下建议：
     </p>
 
     <div class="shard-failures" ng-show="failures">
-      <h3>Shard Failures</h3>
-      <p>The following shard failures ocurred:</p>
+      <h3>分片失败</h3> <!-- Shard Failures -->
+      <p>失败地点：</p> <!-- The following shard failures ocurred: -->
       <ul>
         <li ng-repeat="failure in failures | limitTo: failuresShown"><strong>Index:</strong> {{failure.index}} <strong>Shard:</strong> {{failure.shard}} <strong>Reason:</strong> {{failure.reason}} </li>
       </ul>
-      <a ng-click="showAllFailures()" ng-if="failures.length > failuresShown" title="Show More">Show More</a>
-      <a ng-click="showLessFailures()" ng-if="failures.length === failuresShown && failures.length > 5" title="Show Less">Show Less</a>
+      <a ng-click="showAllFailures()" ng-if="failures.length > failuresShown" title="Show More">展开</a> <!-- Show More -->
+      <a ng-click="showLessFailures()" ng-if="failures.length === failuresShown && failures.length > 5" title="Show Less">收起</a> <!-- Show Less -->
     </div>
 
     <div ng-show="opts.timefield">
-      <p>
-        <h3>Expand your time range</h3>
-        <p>I see you are looking at an index with a date field. It is possible your query does not match anything in the current time range, or that there is no data at all in the currently selected time range. Click the button below to open the time picker. For future reference you can open the time picker by clicking on the <a class="btn btn-xs navbtn" ng-click="kbnTopNav.toggle('filter')" aria-expanded="kbnTopNav.is('filter')" aria-label="time picker" data-test-subj="discoverNoResultsTimefilter"><i aria-hidden="true" class="fa fa-clock-o"></i> time picker</a> button in the top right corner of your screen.
-      </p>
+      
+        <h3>扩大搜索时间范围</h3> <!-- Expand your time range -->
+        <!--         
+        <p>
+        	I see you are looking at an index with a date field. It is possible your query does not match anything in the current time range, or that there is no data at all in the currently selected time range. Click the button below to open the time picker. For future reference you can open the time picker by clicking on the <a class="btn btn-xs navbtn" ng-click="kbnTopNav.toggle('filter')" aria-expanded="kbnTopNav.is('filter')" aria-label="time picker" data-test-subj="discoverNoResultsTimefilter"><i aria-hidden="true" class="fa fa-clock-o"></i> time picker</a> button in the top right corner of your screen.
+        </p>
+        -->
     </div>
 
-    <h3>Refine your query</h3>
+    <h3>重新定义查询条件</h3> <!-- Refine your query -->
+    <!-- 
     <p>
       The search bar at the top uses Elasticsearch's support for Lucene <a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax" target="_blank">Query String syntax</a>. Let's say we're searching web server logs that have been parsed into a few fields.
     </p>
@@ -46,6 +51,6 @@
       Or HTML
       <pre>status:[400 TO 499] AND (extension:php OR extension:html)</pre>
     </p>
-
+	-->
   </div>
 </div>

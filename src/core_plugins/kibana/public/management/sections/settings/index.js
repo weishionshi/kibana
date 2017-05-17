@@ -40,7 +40,7 @@ uiModules.get('apps/management')
 });
 
 management.getSection('kibana').register('settings', {
-  display: 'Advanced Settings',
+  display: '高级设置',//Advanced Settings
   order: 20,
   url: '#/management/kibana/settings'
 });

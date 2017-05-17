@@ -90,8 +90,9 @@ export default function PointSeriesProvider(Private) {
     }
 
     checkIfEnoughData() {
-      const message = 'Area charts require more than one data point. Try adding ' +
-        'an X-Axis Aggregation';
+      const message = '面积图至少需要两个数据源，请添加X轴数据';
+    	  /*'Area charts require more than one data point. Try adding ' +
+        'an X-Axis Aggregation';*/
 
       const notEnoughData = this.chartData.values.length < 2;
 

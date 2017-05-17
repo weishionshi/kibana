@@ -1,7 +1,7 @@
 import ManagementSection from './section';
 
 const sections = new ManagementSection('management', {
-  display: 'Management'
+  display: '管理'//Management
 });
 
 // TODO: where should this live?
