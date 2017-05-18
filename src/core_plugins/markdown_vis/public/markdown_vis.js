@@ -8,7 +8,7 @@ import markdownVisParamsTemplate from 'plugins/markdown_vis/markdown_vis_params.
 // we also need to load the controller and used by the template
 
 // register the provider with the visTypes registry so that other know it exists
-require('ui/registry/vis_types').register(MarkdownVisProvider);
+//require('ui/registry/vis_types').register(MarkdownVisProvider);
 
 function MarkdownVisProvider(Private) {
   const TemplateVisType = Private(TemplateVisTypeTemplateVisTypeProvider);

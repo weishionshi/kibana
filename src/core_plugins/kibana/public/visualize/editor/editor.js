@@ -101,7 +101,8 @@ function VisEditor($scope, $route, timefilter, AppState, $location, kbnUrl, $tim
   // sources.
   const searchSource = savedVis.searchSource;
 
-  $scope.topNavMenu = [{
+/*  
+    $scope.topNavMenu = [{
     key: 'new',
     description: 'New Visualization',
     run: function () { kbnUrl.change('/visualize', {}); },
@@ -123,6 +124,28 @@ function VisEditor($scope, $route, timefilter, AppState, $location, kbnUrl, $tim
     testId: 'visualizeShareButton',
   }, {
     key: 'refresh',
+    description: 'Refresh',
+    run: function () { $scope.fetch(); },
+    testId: 'visualizeRefreshButton',
+  }];
+  */
+    $scope.topNavMenu = [{
+    key: '新建',
+    description: 'New Visualization',
+    run: function () { kbnUrl.change('/visualize', {}); },
+    testId: 'visualizeNewButton',
+  }, {
+    key: '保存',
+    description: 'Save Visualization',
+    template: require('plugins/kibana/visualize/editor/panels/save.html'),
+    testId: 'visualizeSaveButton',
+  }, {
+    key: '打开',
+    description: 'Open Saved Visualization',
+    template: require('plugins/kibana/visualize/editor/panels/load.html'),
+    testId: 'visualizeOpenButton',
+  }, {
+    key: '刷新',
     description: 'Refresh',
     run: function () { $scope.fetch(); },
     testId: 'visualizeRefreshButton',

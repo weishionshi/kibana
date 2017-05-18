@@ -9,7 +9,7 @@ import metricVisParamsTemplate from 'plugins/metric_vis/metric_vis_params.html';
 // we also need to load the controller and used by the template
 
 // register the provider with the visTypes registry
-require('ui/registry/vis_types').register(MetricVisProvider);
+//require('ui/registry/vis_types').register(MetricVisProvider);
 
 function MetricVisProvider(Private) {
   const TemplateVisType = Private(TemplateVisTypeTemplateVisTypeProvider);

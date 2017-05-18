@@ -6,7 +6,7 @@ import VisSchemasProvider from 'ui/vis/schemas';
 import tagCloudTemplate from 'plugins/tagcloud/tag_cloud_controller.html';
 import visTypes from 'ui/registry/vis_types';
 
-visTypes.register(function TagCloudProvider(Private) {
+/*visTypes.register(function TagCloudProvider(Private) {
   const TemplateVisType = Private(TemplateVisTypeTemplateVisTypeProvider);
   const Schemas = Private(VisSchemasProvider);
 
@@ -54,5 +54,5 @@ visTypes.register(function TagCloudProvider(Private) {
     ])
   });
 });
-
+*/
 

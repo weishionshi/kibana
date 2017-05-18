@@ -7,7 +7,7 @@ define(function (require) {
   require('plugins/timelion/vis/timelion_vis.less');
 
   // register the provider with the visTypes registry so that other know it exists
-  require('ui/registry/vis_types').register(TimelionVisProvider);
+  /*require('ui/registry/vis_types').register(TimelionVisProvider); */
 
   function TimelionVisProvider(Private) {
     var TemplateVisType = Private(require('ui/template_vis_type'));

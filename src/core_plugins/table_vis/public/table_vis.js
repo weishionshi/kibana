@@ -29,10 +29,11 @@ function TableVisTypeProvider(Private) {
   // Vis object of this type.
   return new TemplateVisType({
     name: 'table',
-    title: 'Data table',
+    title: '表格',//Data table
     icon: 'fa-table',
-    description: 'The data table provides a detailed breakdown, in tabular format, of the results of a composed ' +
-      'aggregation. Tip, a data table is available from many other charts by clicking the grey bar at the bottom of the chart.',
+    description: '以表格的形式展示搜索结果。提示：其他的统计图下方有一个灰色的‘表格’按钮，通过点击此按钮可以生成表格',
+    /*'The data table provides a detailed breakdown, in tabular format, of the results of a composed ' +
+      'aggregation. Tip, a data table is available from many other charts by clicking the grey bar at the bottom of the chart.',*/
     template: tableVisTemplate,
     params: {
       defaults: {
