@@ -15,9 +15,9 @@ const linkReqRespStats = function ($scope, config) {
     const resp = $scope.req.resp;
     const stats = $scope.stats = [];
 
-    if (resp && resp.took != null) stats.push(['Query Duration', resp.took + 'ms']);
-    if (req && req.ms != null) stats.push(['Request Duration', req.ms + 'ms']);
-    if (resp && resp.hits) stats.push(['Hits', resp.hits.total]);
+    if (resp && resp.took != null) stats.push(['查询耗时', resp.took + 'ms']);//Query Duration
+    if (req && req.ms != null) stats.push(['请求耗时', req.ms + 'ms']); //Request Duration
+    if (resp && resp.hits) stats.push(['匹配次数', resp.hits.total]);  //Hits
 
     if (req.fetchParams) {
       if (req.fetchParams.index) stats.push(['Index', req.fetchParams.index]);
@@ -31,7 +31,7 @@ require('ui/registry/spy_modes')
 .register(function () {
   return {
     name: 'request',
-    display: 'Request',
+    display: '请求内容',//Request
     order: 2,
     template: reqRespStatsHTML,
     link: linkReqRespStats
@@ -40,7 +40,7 @@ require('ui/registry/spy_modes')
 .register(function () {
   return {
     name: 'response',
-    display: 'Response',
+    display: '响应内容', //Response
     order: 3,
     template: reqRespStatsHTML,
     link: linkReqRespStats
@@ -49,7 +49,7 @@ require('ui/registry/spy_modes')
 .register(function () {
   return {
     name: 'stats',
-    display: 'Statistics',
+    display: '统计信息',//Statistics
     order: 4,
     template: reqRespStatsHTML,
     link: linkReqRespStats

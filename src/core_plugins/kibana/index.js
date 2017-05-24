@@ -77,7 +77,7 @@ module.exports = function (kibana) {
         }, {
           id: 'kibana:visualize',
           //title: 'Visualize',
-          title: '可视化图表',
+          title: '统计图表',
           order: -1002,
           url: `${kbnBaseUrl}#/visualize`,
           description: 'design data visualizations',

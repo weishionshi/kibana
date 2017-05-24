@@ -12,10 +12,10 @@ import uiModules from 'ui/modules';
 const plugins = [function (Client, config) {
   // esFactory automatically injects the AngularConnector to the config
   // https://github.com/elastic/elasticsearch-js/blob/master/src/lib/connectors/angular.js
-  class CustomAngularConnector extends config.connectionClass {
-    request = _.wrap(this.request, function (request, params, cb) {
+  class CustomAngularConnector extends config.connectionClass { // es6中引入了class，
+    request = _.wrap(this.request, function (request, params, cb) {	//_.wrap(),相当于
       if (String(params.method).toUpperCase() === 'GET') {
-        params.query = _.defaults({ _: Date.now() }, params.query);
+        params.query = _.defaults({ _: Date.now() }, params.query);	// 相当于在params.query前添加一个属性  _ : 当前时间
       }
 
       return request.call(this, params, cb);

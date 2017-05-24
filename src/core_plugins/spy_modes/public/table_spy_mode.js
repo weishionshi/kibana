@@ -11,7 +11,7 @@ function VisSpyTableProvider(Notifier, $filter, $rootScope, config, Private) {
 
   return {
     name: 'table',
-    display: 'Table',
+    display: '表格', //Table
     order: 1,
     template: tableSpyModeTemplate,
     link: function tableLinkFn($scope, $el) {
