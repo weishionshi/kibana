@@ -34,7 +34,18 @@
         <kbn-global-timepicker></kbn-global-timepicker>
       </div>
     </div>
+
   </div>
+
+  <!--radio box-->
+  <div class="queryType">
+    <input type="radio" name="queryType" ng-model="queryType" ng-value="comp" ng-checked="true" ng-init="queryType='comp'"/>组合条件
+    <input type="radio" name="queryType" ng-model="queryType" ng-value="DSL" />DSL语句  
+    {{queryType}}
+  </div>
+
+
+  
 
   <!-- Dropdown content, e.g. time-picker. -->
   <div
@@ -49,8 +60,8 @@
     </div>
   </div>
 
-  <div class="kuiLocalNavRow kuiLocalNavRow--secondary">
-    <!-- Bottom row slot, e.g. tabs. -->
+  <div>
+    <!-- Bottom row slot, e.g. tabs. class="kuiLocalNavRow kuiLocalNavRow--secondary"-->
     <div data-transclude-slot="bottomRow"></div>
   </div>
 </div>

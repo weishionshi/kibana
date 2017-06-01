@@ -25,6 +25,7 @@
         role="form"
         name="discoverSearch"
         ng-submit="fetch()"
+        ng-show="queryType=='DSL'"
       >
         <div class="typeahead" kbn-typeahead="discover">
           <div class="kuiLocalSearch">
@@ -51,12 +52,52 @@
           <kbn-typeahead-items></kbn-typeahead-items>
         </div>
       </form>
+
+
+
+      <form
+        data-transclude-slot="bottomRow"
+        class="fullWidth"
+        role="form"
+        name="discoverSearch"
+        ng-show="queryType=='comp'"
+      >
+        <div id="div1" class="queryConds">
+
+          <button class="btn btn-default btn-sm" ng-click="addCond()">新增</button>
+          <button class="btn btn-default btn-sm" ng-click="delAllCond()">删除所有</button>
+          <br><br>
+    
+          <div class="logicOper">
+              <label>条件逻辑：</label>
+              <input type="radio" name="logicOper" ng-model="logicOper" value="AND" ng-checked="true" ng-init="logicOper='AND'"/>全部满足
+              <input type="radio" name="logicOper" ng-model="logicOper" value="OR"/>任一满足  
+              
+          </div>
+          
+          <div ng-repeat="cond in conds">
+            <select ng-model="cond.fieldName" ng-options="field for field in fields"></select>
+            <select ng-model="cond.selectedOper" ng-options= "oper.id as oper.name for oper in opers"></select>
+
+            <input type="text" ng-model="cond.fieldValue" />
+            <a ng-show="$index!=0" style="color:red;font-size:11px" ng-click="delCond($index)">删除</a>
+          </div>
+
+          <button class="btn btn-default btn-sm " ng-click="search()">搜索</button> 
+          {{queryType}}
+      </div>
+
+      </form>
+
+
+
     </div>
   </kbn-top-nav>
 
   <div class="container-fluid" role="main">
     <div class="row">
-      <filter-bar state="state"></filter-bar>
+      <filter-bar state="state">
+      </filter-bar>
     </div>
     <div class="row">
       <div class="col-md-2 sidebar-container collapsible-sidebar">
@@ -79,7 +120,7 @@
           <!-- loading -->
           <div ng-show="resultState === 'loading'">
             <div class="discover-overlay">
-              <h2>Searching</h2>
+              <h2>搜索中...</h2>  <!-- Searching -->
               <div ng-show="fetchStatus">{{fetchStatus.complete}}/{{fetchStatus.total}}</div>
             </div>
           </div>
