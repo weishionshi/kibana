@@ -18,16 +18,15 @@
         </div>
       </div>
 
-      <!-- Search. -->
+      <!-- Search. ng-show="!queryType"-->
       <form
         data-transclude-slot="bottomRow"
         class="fullWidth"
         role="form"
         name="discoverSearch"
         ng-submit="fetch()"
-        ng-show="queryType=='DSL'"
       >
-        <div class="typeahead" kbn-typeahead="discover">
+        <div class="typeahead" kbn-typeahead="discover" ng-show="!queryType">
           <div class="kuiLocalSearch">
             <input
               parse-query
@@ -51,20 +50,12 @@
           </div>
           <kbn-typeahead-items></kbn-typeahead-items>
         </div>
-      </form>
+        
+        
+        
+        <div class="kuiQueryConds" ng-show="queryType">
 
-
-
-      <form
-        data-transclude-slot="bottomRow"
-        class="fullWidth"
-        role="form"
-        name="discoverSearch"
-        ng-show="queryType=='comp'"
-      >
-        <div id="div1" class="queryConds">
-
-          <button class="btn btn-default btn-sm" ng-click="addCond()">新增</button>
+          <button class="btn btn-default btn-sm" ng-click="addCond()">新增条件</button>
           <button class="btn btn-default btn-sm" ng-click="delAllCond()">删除所有</button>
           <br><br>
     
@@ -80,15 +71,12 @@
             <select ng-model="cond.selectedOper" ng-options= "oper.id as oper.name for oper in opers"></select>
 
             <input type="text" ng-model="cond.fieldValue" />
-            <a ng-show="$index!=0" style="color:red;font-size:11px" ng-click="delCond($index)">删除</a>
+            <a class="glyphicon glyphicon-remove"ng-show="$index!=0" style="color:red;font-size:13px" ng-click="delCond($index)"></a>
           </div>
 
-          <button class="btn btn-default btn-sm " ng-click="search()">搜索</button> 
-          {{queryType}}
+          <button class="btn btn-sm " ng-click="search()">搜索</button> 
       </div>
-
       </form>
-
 
 
     </div>

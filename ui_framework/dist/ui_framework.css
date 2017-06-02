@@ -735,6 +735,22 @@ body {
     color: #ffffff;
     background-color: #777777; }
 
+
+.kuiQueryConds{
+  background-color: #ffffff;
+  border: 2px solid #0080FF;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-left-style: none;
+  border-right-style: none;
+}
+
+.kuiQueryType{
+   padding: 5px 10px;
+}
+
 /**
  * 1. We want the bottom border on selected tabs to be flush with the bottom of the container.
  */
