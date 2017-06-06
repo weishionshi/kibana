@@ -89,7 +89,7 @@
       <div class="form-group">
         <label>
           <input type="checkbox" ng-model="filter.vals.missing">
-          Hide Missing Fields
+          	隐藏缺失字段<!-- Hide Missing Fields -->
         </label>
       </div>
     </form>
@@ -97,7 +97,7 @@
       ng-click="filter.reset()"
       ng-disabled="!filter.active"
       class="sidebar-item-button danger ng-scope">
-      Reset Filters
+      	重置<!-- Reset Filters -->
     </div>
   </div>
 
@@ -106,7 +106,7 @@
     ng-class="{ 'hidden-sm': !showFields, 'hidden-xs': !showFields }"
     class="list-unstyled sidebar-well discover-popular-fields">
     <li class="sidebar-item sidebar-list-header">
-      <h6>Popular</h6>
+      <h6>常用字段</h6> <!-- Popular -->
     </li>
     <discover-field
       ng-repeat="field in popularFields | filter:filter.isFieldFiltered">

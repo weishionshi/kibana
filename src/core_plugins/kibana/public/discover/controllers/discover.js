@@ -605,7 +605,7 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
 *
 *
 */
-    const MAXCOND=10;
+    const MAXCOND=20;
     $scope.cond = {};
     $scope.fields = ["timestamp","id","level","application","message"];//TO-DO:此数组的值通过调用es接口获取
     $scope.opers = [{id:0,name:"等于",oper:"==="},
