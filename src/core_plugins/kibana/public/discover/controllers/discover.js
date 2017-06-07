@@ -149,6 +149,9 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
   $scope.searchSource = savedSearch.searchSource;
   $scope.indexPattern = resolveIndexPatternLoading();
   $scope.searchSource.set('index', $scope.indexPattern);
+  const indexPattern2 = $scope.indexPattern
+  $scope.fields = _.keys(indexPattern2.fields.byName);
+  //console.log("--------$scope.fields:"+$scope.fields.toString());
 
   if (savedSearch.id) {
     docTitle.change(savedSearch.title);
@@ -607,7 +610,7 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
 */
     const MAXCOND=20;
     $scope.cond = {};
-    $scope.fields = ["timestamp","id","level","application","message"];//TO-DO:此数组的值通过调用es接口获取
+    //$scope.fields = ["timestamp","id","level","application","message"];//TO-DO:此数组的值通过调用es接口获取
     $scope.opers = [{id:0,name:"等于",oper:"==="},
           {id:1,name:"不等于",oper:"!=="},
           {id:2,name:"包含",oper:""},
@@ -616,7 +619,7 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
           {id:5,name:"小于",oper:"<"},
           {id:6,name:"大于等于",oper:">="},
           {id:7,name:"小于等于",oper:"<="},];
-    $scope.conds = [{fieldName:"level",selectedOper:0,fieldValue:"ERROR"}];
+    $scope.conds = [{fieldName:$scope.fields[0].toString(),selectedOper:0,fieldValue:""}];
 
 
     $scope.addCond=function(){
