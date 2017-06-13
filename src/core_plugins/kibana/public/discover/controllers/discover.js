@@ -487,7 +487,8 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
     $scope.searchSource
     .size($scope.opts.sampleSize)
     .sort(getSort($state.sort, $scope.indexPattern))
-    .query(!$state.query ? null : $state.query)
+    //.query(!$state.query ? null : $state.query)
+    .query(getQueryConds())
     .set('filter', queryFilter.getFilters());
 
     if (config.get('doc_table:highlight')) {
@@ -610,8 +611,9 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
 */
     const MAXCOND=20;
     $scope.cond = {};
-    //$scope.fields = ["timestamp","id","level","application","message"];//TO-DO:此数组的值通过调用es接口获取
-    $scope.opers = [{id:0,name:"等于",oper:"==="},
+    $scope.conds =[];
+    $scope.opers = [
+    	  {id:0,name:"等于",oper:"==="},
           {id:1,name:"不等于",oper:"!=="},
           {id:2,name:"包含",oper:""},
           {id:3,name:"不包含",oper:""},
@@ -619,7 +621,7 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
           {id:5,name:"小于",oper:"<"},
           {id:6,name:"大于等于",oper:">="},
           {id:7,name:"小于等于",oper:"<="},];
-    $scope.conds = [{fieldName:$scope.fields[0].toString(),selectedOper:0,fieldValue:""}];
+    //$scope.conds = [{fieldName:$scope.fields[0].toString(),selectedOper:0,fieldValue:""}];
 
 
     $scope.addCond=function(){
@@ -641,8 +643,58 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
 
 
   $scope.delAllCond=function(){
-    $scope.conds = null;
+    $scope.conds = [];
   }
 
+	function getQueryConds(){
+		var queryConds="";
+		console.log("-----$scope.queryType:"+$scope.queryType)
+		if($scope.queryType){
+			queryConds=concatQueryConds();
+		}else{
+			queryConds= !$state.query ? "" : $state.query;
+		}
+		console.log("-----------queryConds:"+queryConds);
+		return queryConds;
+	}
+	
+	function concatQueryConds(){
+		if($scope.conds.length==0) return;
+		
+		console.log("-----$scope.logicOper:"+$scope.logicOper);
+		var oper=$scope.logicOper+" ";
+		var conds="";
+		var tempConds=[];
+		
+		//根据运算符 转成 对应的 lucene查询语法
+		for(var i=0;i<$scope.conds.length;i++){
+			switch ($scope.conds[i].selectedOper) { 
+			 case 0: //等于
+				 tempConds[i]=$scope.conds[i].fieldName +":"+"\""+$scope.conds[i].fieldValue+"\"";
+			 break; 
+			 case 1: //不等于
+				 tempConds[i]="NOT "+$scope.conds[i].fieldName +":"+"\""+$scope.conds[i].fieldValue+"\"";
+			 break; 
+			 case 2: //包含 
+				 tempConds[i]=$scope.conds[i].fieldName +":"+$scope.conds[i].fieldValue;
+			 break;  
+			 case 3://不包含
+				 tempConds[i]="NOT "+$scope.conds[i].fieldName +":"+$scope.conds[i].fieldValue;
+			 break;
 
+			}
+
+		}
+		
+		//拼接各个条件
+		conds=tempConds[0];
+		if(tempConds.length>1){
+			for(var j=1;j<tempConds.length;j++){
+				conds=conds+" " + oper + tempConds[j];
+			}
+		}
+		
+		return conds;
+	}
+  
 };
