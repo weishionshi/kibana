@@ -60,21 +60,21 @@
           <br><br>
     
           <div class="logicOper">
-              <label>条件逻辑：{{logicOper}}</label>
-              <input type="radio" name="logicOper" ng-model="logicOper" value="AND" ng-checked="true" ng-init="logicOper='AND'"/>全部满足
-              <input type="radio" name="logicOper" ng-model="logicOper" value="OR"/>任一满足  
+              <label>{{query.logicOper}}逻辑运算：</label>
+              <input type="radio" name="logicOper" ng-model="query.logicOper" value="AND" ng-checked="true" ng-init="query.logicOper='AND'"/>全部满足
+              <input type="radio" name="logicOper" ng-model="query.logicOper" value="OR"/>任一满足  
               
           </div>
           
-          <div ng-repeat="cond in conds">
-            <select ng-model="cond.fieldName" ng-options="field for field in fields"></select>
-            <select ng-model="cond.selectedOper" ng-options= "oper.id as oper.name for oper in opers"></select>
+          <div name="divConds" ng-repeat="cond in conds">
+            <select ng-model="cond.fieldName" ng-options="field for field in fields" required></select>
+            <select ng-model="cond.selectedOper" ng-options= "oper.id as oper.name for oper in opers" required></select>
 
-            <input type="text" ng-model="cond.fieldValue" />
-            <a class="glyphicon glyphicon-remove"ng-show="$index!=0" style="color:red;font-size:13px" ng-click="delCond($index)"></a>
+            <input type="text" ng-model="cond.fieldValue" required />
+            <a class="glyphicon glyphicon-remove" style="color:red;font-size:13px" ng-click="delCond($index)"></a>
           </div>
 
-          <button class="btn btn-sm " type="submit">搜索</button> 
+          <button class="btn btn-sm " type="submit" ng-disabled="divConds.$invalid || conds.length==0" >搜索</button> 
       </div>
       </form>
 

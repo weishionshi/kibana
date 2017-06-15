@@ -7,13 +7,13 @@
     class="btn btn-info"
     aria-label="Add Scripted Field">
     <i aria-hidden="true" class="fa fa-plus"></i>
-    Add Scripted Field
+    	新增 Scripted Field
   </a>
 </header>
 
 <div class="hintbox" ng-if="getDeprecatedLanguagesInUse().length !== 0">
   <h4>
-    <i class="fa fa-warning text-warning"></i> Deprecation Warning
+    <i class="fa fa-warning text-warning"></i> 启用警告 <!-- Deprecation Warning -->
   </h4>
   <p>
     We've detected that the following deprecated languages are in use: {{ getDeprecatedLanguagesInUse().join(', ') }}.
@@ -30,4 +30,4 @@
   per-page="perPage">
 </paginated-table>
 
-<p class="text-center" ng-if="rows.length === 0">No matching scripted fields found.</p>
+<p class="text-center" ng-if="rows.length === 0">未找到字段</p> <!-- No matching scripted fields found. -->

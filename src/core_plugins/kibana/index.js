@@ -98,15 +98,15 @@ module.exports = function (kibana) {
           url: '/app/kibana#/dev_tools',
           description: 'development tools',
           icon: 'plugins/kibana/assets/wrench.svg'
-        }, {
+        },*/ {
           id: 'kibana:management',
-          title: 'Management',
+          title: '设置',
           order: 9003,
           url: `${kbnBaseUrl}#/management`,
           description: 'define index patterns, change config, and more',
           icon: 'plugins/kibana/assets/settings.svg',
           linkToLastSubUrl: false
-        },*/
+        },
       ],
 
       injectDefaultVars(server, options) {

@@ -29,7 +29,7 @@ uiModules.get('apps/management')
         { title: 'aggregatable' , info: 'These fields can be used in visualization aggregations' },
         { title: 'analyzed', info: 'Analyzed fields may require extra memory to visualize' },
         { title: 'excluded', info: 'Fields that are excluded from _source when it is fetched' },
-        { title: 'controls', sortable: false }
+        { title: '编辑', sortable: false } //controls
       ];
 
       $scope.$watchMulti(['[]indexPattern.fields', 'fieldFilter'], refreshRows);

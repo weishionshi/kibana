@@ -38,9 +38,9 @@
   </div>
 
   <!--radio box-->
-  <div class="kuiQueryType">
+  <div class="kuiQueryType" ng-show="appName=='discover'">
     <input type="radio" name="queryType" ng-model="queryType" ng-value="true" ng-checked="true" ng-init="queryType='true'"/>组合条件
-    <input type="radio" name="queryType" ng-model="queryType" ng-value="false" />DSL语句  
+    <input type="radio" name="queryType" ng-model="queryType" ng-value="false" />Lucene查询  
   </div>
 
 

@@ -10,7 +10,13 @@
         </kbn-management-index-header>
 
         <p>
-          This page lists every field in the <strong>{{::indexPattern.id}}</strong>
+        	此处仅仅展示 <strong>{{::indexPattern.id}}</strong>索引的字段和类型，
+        	如果想要修改字段类型，需要通过Elasticsearch提供的
+          <a target="_window" href="http://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html">
+            Mapping API
+            <i aria-hidden="true" class="fa-link fa"></i>
+          </a>
+          <!-- This page lists every field in the <strong>{{::indexPattern.id}}</strong>
           index and the field's associated core type as recorded by Elasticsearch.
           While this list allows you to view the core type of each field, changing
           field types must be done using Elasticsearch's
@@ -18,6 +24,7 @@
             Mapping API
             <i aria-hidden="true" class="fa-link fa"></i>
           </a>
+          -->
         </p>
         <div ng-if="indexPattern.timeFieldName && indexPattern.intervalName" class="alert alert-info">
           This index uses a <strong>Time-based index pattern</strong> which repeats <span ng-bind="::indexPattern.getInterval().display"></span>

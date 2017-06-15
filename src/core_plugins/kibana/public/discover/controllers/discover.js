@@ -612,6 +612,7 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
     const MAXCOND=20;
     $scope.cond = {};
     $scope.conds =[];
+    $scope.query={};
     $scope.opers = [
     	  {id:0,name:"等于",oper:"==="},
           {id:1,name:"不等于",oper:"!=="},
@@ -646,27 +647,37 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
     $scope.conds = [];
   }
 
+  /**
+   * 返回 lucene query string
+   * 
+   * 如果UI是组合条件，则调用转换函数
+   * 如果UI是DSL，则直接返回$state.query
+   */
 	function getQueryConds(){
 		var queryConds="";
-		console.log("-----$scope.queryType:"+$scope.queryType)
+		//console.log("-----$scope.queryType:"+$scope.queryType)
 		if($scope.queryType){
 			queryConds=concatQueryConds();
 		}else{
 			queryConds= !$state.query ? "" : $state.query;
 		}
-		console.log("-----------queryConds:"+queryConds);
+		//console.log("-----------queryConds:"+queryConds);
 		return queryConds;
 	}
 	
+	
+	/**
+	 * 把组合条件 转换拼接成 lucene query string
+	 */
 	function concatQueryConds(){
-		if($scope.conds.length==0) return;
+		if($scope.conds.length==0) return "";
 		
-		console.log("-----$scope.logicOper:"+$scope.logicOper);
-		var oper=$scope.logicOper+" ";
+		//console.log("-----$scope.query.logicOper:"+$scope.query.logicOper);
+		var oper=$scope.query.logicOper+" ";
 		var conds="";
 		var tempConds=[];
 		
-		//根据运算符 转成 对应的 lucene查询语法
+		//根据运算符 转成 对应的 lucene query string 查询语法
 		for(var i=0;i<$scope.conds.length;i++){
 			switch ($scope.conds[i].selectedOper) { 
 			 case 0: //等于
@@ -680,6 +691,18 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
 			 break;  
 			 case 3://不包含
 				 tempConds[i]="NOT "+$scope.conds[i].fieldName +":"+$scope.conds[i].fieldValue;
+			 break;
+			 case 4://大于
+				 tempConds[i]=$scope.conds[i].fieldName +":>"+$scope.conds[i].fieldValue;
+			 break;
+			 case 5://小于
+				 tempConds[i]=$scope.conds[i].fieldName +":<"+$scope.conds[i].fieldValue;
+			 break;
+			 case 6://大于等于
+				 tempConds[i]=$scope.conds[i].fieldName +":>="+$scope.conds[i].fieldValue;
+			 break;
+			 case 7://小于等于
+				 tempConds[i]=$scope.conds[i].fieldName +":<="+$scope.conds[i].fieldValue;
 			 break;
 
 			}
