@@ -150,7 +150,7 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
   $scope.indexPattern = resolveIndexPatternLoading();
   $scope.searchSource.set('index', $scope.indexPattern);
   const indexPattern2 = $scope.indexPattern
-  $scope.fields = _.keys(indexPattern2.fields.byName);
+  $scope.fields = _.keys(indexPattern2.fields.byName).sort();
   //console.log("--------$scope.fields:"+$scope.fields.toString());
 
   if (savedSearch.id) {
@@ -651,7 +651,7 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
    * 返回 lucene query string
    * 
    * 如果UI是组合条件，则调用转换函数
-   * 如果UI是DSL，则直接返回$state.query
+   * 如果UI是lucene，则直接返回$state.query
    */
 	function getQueryConds(){
 		var queryConds="";
@@ -661,7 +661,7 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
 		}else{
 			queryConds= !$state.query ? "" : $state.query;
 		}
-		//console.log("-----------queryConds:"+queryConds);
+		console.log("-----------queryConds:"+queryConds);
 		return queryConds;
 	}
 	
@@ -670,7 +670,7 @@ function discoverController($scope, config, courier, $route, $window, Notifier,
 	 * 把组合条件 转换拼接成 lucene query string
 	 */
 	function concatQueryConds(){
-		if($scope.conds.length==0) return "";
+		if($scope.conds.length==0) return "*";
 		
 		//console.log("-----$scope.query.logicOper:"+$scope.query.logicOper);
 		var oper=$scope.query.logicOper+" ";
