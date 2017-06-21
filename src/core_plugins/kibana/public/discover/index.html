@@ -72,6 +72,7 @@
 
             <input type="text" ng-model="cond.fieldValue" required />
             <a class="glyphicon glyphicon-remove" style="color:red;font-size:13px" ng-click="delCond($index)"></a>
+            <span class="alert alert-warning" style="padding:5px" ng-show="cond.selectedOper==2 || cond.selectedOper==3">注意：只有ANALYZED字段才支持模糊查找</span>
           </div>
 
           <button class="btn btn-sm " type="submit" ng-disabled="divConds.$invalid || conds.length==0" >搜索</button> 
