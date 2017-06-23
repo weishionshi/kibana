@@ -4,7 +4,8 @@
     <div class="kuiViewContentItem kuiBar kuiVerticalRhythm">
       <div class="kuiBarSection">
         <h1 class="kuiTitle">
-          Edit Saved Objects
+        	编辑已存对象
+          <!-- Edit Saved Objects -->
         </h1>
       </div>
 
@@ -14,7 +15,7 @@
           ng-click="exportAll()"
         >
           <span aria-hidden="true" class="kuiButton__icon kuiIcon fa-download"></span>
-          Export Everything
+          	导出所有<!-- Export Everything -->
         </button>
 
         <file-upload
@@ -26,7 +27,7 @@
             data-import-saved-objects-button
           >
             <span aria-hidden="true" class="kuiButton__icon kuiIcon fa-upload"></span>
-            Import
+            	导入<!-- import -->
           </button>
         </file-upload>
       </div>
@@ -34,7 +35,12 @@
 
     <!-- Intro -->
     <p class="kuiViewContentItem kuiVerticalRhythm">
-      From here you can delete saved objects, such as saved searches. You can also edit the raw data of saved objects. Typically objects are only modified via their associated application, which is probably what you should use instead of this screen. Each tab is limited to 100 results. You can use the filter to find objects not in the default list.
+    	此处可以编辑或者删除之前新增的内容，例如查询条件、统计图表、仪表盘等。我们不建议普通用户在此处使用编辑功能，因为这容易产生错误。
+    	每个Tab页最多显示100条数据。
+      <!-- From here you can delete saved objects, such as saved searches. 
+      You can also edit the raw data of saved objects. 
+      Typically objects are only modified via their associated application, which is probably what you should use instead of this screen. 
+      Each tab is limited to 100 results. You can use the filter to find objects not in the default list.-->
     </p>
 
     <!-- Tabs -->
@@ -86,7 +92,7 @@
             ng-disabled="selectedItems.length == 0"
           >
             <span aria-hidden="true" class="kuiButton__icon kuiIcon fa-trash"></span>
-            Delete
+            	删除
           </button>
 
           <!-- Bulk export button -->
@@ -97,7 +103,7 @@
             ng-disabled="selectedItems.length == 0"
           >
             <span aria-hidden="true" class="kuiButton__icon kuiIcon fa-download"></span>
-            Export
+            	导出
           </button>
         </div>
 
@@ -109,7 +115,7 @@
       <!-- NoResults -->
       <div class="kuiPanel kuiPanel--centered" ng-if="!service.data.length">
         <div class="kuiNoItems">
-          No {{service.title}} matched your search.
+          	未找到匹配的{{service.title}}
         </div>
       </div>
 
@@ -126,7 +132,7 @@
               >
             </th>
             <th class="kuiTableHeaderCell">
-              Title
+              	名称
             </th>
           </tr>
         </thead>
@@ -146,15 +152,18 @@
             </td>
             <td class="kuiTableRowCell">
               <div class="kuiTableRowCell__liner">
-                <a class="kuiLink" href="" ng-click="edit(service, item)">
+              	<span class="kuiLink">{{ item.title }}</span>
+              <!-- 屏蔽编辑功能入口
+                <a class="kuiLink" href=""  ng-click="edit(service, item)">
                   {{ item.title }}
                 </a>
+              -->
 
                 <button
                   class="kuiMicroButton kuiTableRowHoverReveal"
                   ng-click="open(item)"
                   aria-label="View"
-                  tooltip="View in app"
+                  tooltip="查看"
                 >
                   <span
                     aria-hidden="true"
@@ -172,7 +181,7 @@
       <div class="kuiToolBarFooter">
         <div class="kuiToolBarFooterSection">
           <div class="kuiToolBarText" ng-hide="selectedItems.length === 0">
-            {{ selectedItems.length }} selected
+            	已选{{ selectedItems.length }}条
           </div>
         </div>
         <div class="kuiToolBarFooterSection">

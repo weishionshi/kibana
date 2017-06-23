@@ -2,8 +2,8 @@
   <kbn-management-indices>
     <div ng-controller="managementIndicesCreate" class="kbn-management-indices-create">
       <div class="page-header">
-        <h1 translate="KIBANA-CONFIGURE_INDEX_PATTERN"></h1>
-        <p translate="KIBANA-MUST_CONFIGURE_INDEX_PATTERN"></p>
+        <h1 translate="KIBANA-CONFIGURE_INDEX_PATTERN">请配置索引</h1>
+        <p translate="KIBANA-MUST_CONFIGURE_INDEX_PATTERN">至少需要配置一个索引作为查询和统计的数据源</p>
       </div>
       <div>
         <form name="form" role="form" class="well" ng-submit="createIndexPattern()">
@@ -52,9 +52,9 @@
           </div>
 
           <div class="form-group">
-            <label translate="KIBANA-INDEX_NAME_OR_PATTERN"></label>
-            <p class="help-block" ng-if="!index.nameIsPattern" translate="KIBANA-WILDCARD_DYNAMIC_INDEX_PATTERNS"></p>
-            <p class="help-block" ng-if="index.isTimeBased && index.nameIsPattern"><span translate="KIBANA-STATIC_TEXT_IN_DYNAMIC_INDEX_PATTERNS"></span> &mdash;
+            <label translate="KIBANA-INDEX_NAME_OR_PATTERN">索引名</label>
+            <p class="help-block" ng-if="!index.nameIsPattern" translate="KIBANA-WILDCARD_DYNAMIC_INDEX_PATTERNS">索引名中可以使用*作为通配符，例如: logstash-*</p>
+            <p class="help-block" ng-if="index.isTimeBased && index.nameIsPattern"><span translate="KIBANA-STATIC_TEXT_IN_DYNAMIC_INDEX_PATTERNS">支持动态索引名，静态部分放在[]里，例如[logstash-]YYYY.MM.DD</span> &mdash;
               <small><a target="_blank" href="http://momentjs.com/docs/#/displaying/format/" translate="KIBANA-DATE_FORMAT_DOCS"></a></small></p>
             <input
               ng-model="index.name"
@@ -67,13 +67,14 @@
               type="text"
               class="form-control">
               <small ng-show="index.nameInterval.name == 'weeks'">
-                <strong translate="KIBANA-NOTE_COLON"></strong>&nbsp;
+                <strong translate="KIBANA-NOTE_COLON">注意：</strong>&nbsp;
                 <span translate="KIBANA-WEEKLY_ISO_NOTICE"></span>
                 <span translate="KIBANA-SEE"></span>
                 <a href="https://en.wikipedia.org/wiki/ISO_week_date" target="_blank" title="Wikipedia: ISO Week Date" translate="KIBANA-WIKI_ISO_WEEK_DATE"></a>
               </small>
             </div>
 
+		<!-- 
           <div class="form-group time-and-pattern">
             <label>
               <input
@@ -82,15 +83,16 @@
               <span translate="KIBANA-CONTAINS_TIME_BASED_EVENTS"></span>
             </label>
           </div>
+        
 
           <div class="form-group" ng-if="index.isTimeBased">
             <label>
-              <span translate="KIBANA-TIME_FIELD_NAME"></span>
+              <span translate="KIBANA-TIME_FIELD_NAME">时间字段</span>
               &nbsp;
               <kbn-info info="{{ 'KIBANA-FIELD_FILTER_EVENTS_GLOBAL_TIME' | translate }}"></kbn-info>
               &nbsp;
               <small>
-                <a ng-click="refreshFieldList();" translate="KIBANA-REFRESH_FIELDS"></a>
+                <a ng-click="refreshFieldList();" translate="KIBANA-REFRESH_FIELDS">刷新字段</a>
               </small>
             </label>
             <select
@@ -106,12 +108,12 @@
           <div class="form-group" ng-if="canExpandIndices()">
             <label>
               <input ng-model="index.notExpandable" type="checkbox">
-                <span translate="KIBANA-NOT_EXPAND_INDEX_PATTERN"></span>
-                <small translate="KIBANA-NOT_RECOMMENDED"></small>
+                <span translate="KIBANA-NOT_EXPAND_INDEX_PATTERN">搜索时不展开索引名</span>
+                <small translate="KIBANA-NOT_RECOMMENDED">(不推荐)</small>
             </label>
 
             <div ng-if="index.notExpandable" class="alert alert-info">
-              <span translate="KIBANA-NOT_EXPANDABLE"></span>
+              <span translate="KIBANA-NOT_EXPANDABLE">此索引将直接查询，不会展开</span>
 
               <span translate="KIBANA-ES_QUERY"></span>
               <em translate="KIBANA-INDEX_NAME_VAR" translate-values="{ indexName: '{{index.name}}' }"></em>
@@ -136,19 +138,20 @@
               <small translate="KIBANA-DEPRECATED"></small>
             </label>
           </div>
+        -->
 
           <div class="form-group" ng-if="index.isTimeBased && index.nameIsPattern">
             <div class="alert alert-warning">
               </p>
               <h4 translate="KIBANA-ALERT_INDEX_PATTERN_DEPRECATED"></h4>
               <p>
-                <span translate="KIBANA-WE"></span>
-                <strong translate="KIBANA-STRONGLY_RECOMMEND"></strong>
-                <span translate="KIBANA-WILD_CARD_PATTERN"></span>
+                <span translate="KIBANA-WE">我们</span>
+                <strong translate="KIBANA-STRONGLY_RECOMMEND">强烈推荐</strong>
+                <span translate="KIBANA-WILD_CARD_PATTERN">使用通配符模式，不使用时间间隔模式</span>
               </p>
             </div>
             <label>
-              <span translate="KIBANA-INDEX_PATTERN_INTERVAL"></span>&nbsp;
+              <span translate="KIBANA-INDEX_PATTERN_INTERVAL">索引时间间隔</span>&nbsp;
               <kbn-info info="{{ 'KIBANA-INTERVAL_INDEX_NAMES_ROTATE' | translate }}"></kbn-info>
             </label>
             <select
@@ -170,7 +173,7 @@
                 <li ng-repeat="sample in index.samples">{{sample}}</li>
               </ul>
               <button type="button" ng-click="moreSamples(true)" class="btn btn-default">
-                <span translate="KIBANA-EXPAND_SEARCH"></span>
+                <span translate="KIBANA-EXPAND_SEARCH">展开搜索</span>
               </button>
             </div>
 
@@ -184,7 +187,7 @@
                 ng-click="moreSamples()"
                 type="button"
                 class="btn btn-default">
-                <span translate="KIBANA-EXPAND_SEARCH"></span>
+                <span translate="KIBANA-EXPAND_SEARCH">展开搜索</span>
               </button>
             </div>
 
@@ -197,19 +200,19 @@
                 ng-if="index.sampleCount < index.existing.matches.length"
                 ng-click="moreSamples()"
                 class="alert-link">
-                <span translate="KIBANA-MORE"></span>
+                <span translate="KIBANA-MORE">更多</span>
               </a>
             </div>
           </section>
 
           <div class="form-group" ng-if="index.isTimeBased && !index.fetchFieldsError">
             <label>
-              Time-field name
+              	时间型字段
               &nbsp;
               <kbn-info info="This field will be used to filter events with the global time filter"></kbn-info>
               &nbsp;
               <small>
-                <a ng-click="refreshFieldList();"> refresh fields</a>
+                <a ng-click="refreshFieldList();"> 刷新字段</a>
               </small>
             </label>
             <select
@@ -229,8 +232,8 @@
             type="submit"
             class="btn">
             <span ng-hide="form.name.$error.indexNameInput" ng-if="index.fetchFieldsError">{{index.fetchFieldsError}}</span>
-            <span ng-hide="form.name.$error.indexNameInput" ng-if="!index.fetchFieldsError" translate="KIBANA-CREATE"></span>
-            <span ng-show="form.name.$error.indexNameInput" translate="KIBANA-INVALID_INDEX_PATTERN"></span>
+            <span ng-hide="form.name.$error.indexNameInput" ng-if="!index.fetchFieldsError" translate="KIBANA-CREATE">新建</span>
+            <span ng-show="form.name.$error.indexNameInput" translate="KIBANA-INVALID_INDEX_PATTERN">非法索引</span>
           </button>
         </form>
       </div>

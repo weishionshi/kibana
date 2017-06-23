@@ -27,7 +27,7 @@
           tooltip-placement="bottom"
           tooltip-popup-delay="400"
           tooltip-append-to-body="1"
-          data-test-subj="{{menuItem.testId}}"
+          data-test-subj="{{menuItem.testId}}"          
         ></div>
 
         <!-- Time-picker "menu item" -->
@@ -39,7 +39,7 @@
 
   <!--radio box-->
   <div class="kuiQueryType" ng-show="appName=='discover'">
-    <input type="radio" name="queryType" ng-model="queryType" ng-value="true" ng-checked="true" ng-init="queryType='true'"/>组合条件
+    <input type="radio" name="queryType" ng-model="queryType" ng-value="true" ng-checked="true" ng-init="queryType='true'"/>组合条件查询
     <input type="radio" name="queryType" ng-model="queryType" ng-value="false" />Lucene查询  
   </div>
 
